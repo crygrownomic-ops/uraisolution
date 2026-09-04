@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>URAI SOLUTION — Digital Solution</title>
+<title>URAI SOLUTION — Digital Solution Partner</title>
 
 <!-- Browser-safe favicon paths -->
 <link rel="icon" href="./favicon.ico" sizes="any">
@@ -12,40 +12,81 @@
 
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{font-family:Arial,Helvetica,sans-serif;color:#12213a;background:#fff}
-.header{height:82px;border-bottom:1px solid #e3e9f1;background:#fff}
+html,body{margin:0;padding:0;scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;color:#12213a;background:#fff;line-height:1.5}
+.header{position:sticky;top:0;z-index:100;height:82px;border-bottom:1px solid #e3e9f1;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px)}
 .header-inner{height:100%;max-width:1180px;margin:auto;padding:0 24px;display:flex;align-items:center}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#10213d}
 .brand-logo{display:block;width:54px;height:54px;flex:0 0 54px;object-fit:contain;border-radius:50%}
 .brand-name{font-size:19px;font-weight:800;letter-spacing:.2px;line-height:1.05}
 .brand-tag{display:block;margin-top:4px;color:#1677ff;font-size:9px;font-weight:800;letter-spacing:2.2px}
-.nav{margin-left:auto;display:flex;gap:26px}
-.nav a{color:#53627a;text-decoration:none;font-size:13px;font-weight:650}
+.nav{margin-left:auto;display:flex;gap:26px;align-items:center}
+.nav a{color:#53627a;text-decoration:none;font-size:13px;font-weight:650;transition:color .2s}
 .nav a:hover{color:#1677ff}
-.hero{padding:100px 24px;background:linear-gradient(180deg,#fff 0%,#f4f8ff 100%)}
+.hero{padding:100px 24px 80px;background:linear-gradient(180deg,#fff 0%,#f4f8ff 100%)}
 .hero-inner{max-width:1180px;margin:auto}
-.eyebrow{color:#1677ff;font-size:12px;font-weight:800;letter-spacing:2px}
-h1{font-size:clamp(44px,6vw,70px);line-height:1.03;letter-spacing:-2px;color:#07183b;margin:14px 0 20px}
+.eyebrow{color:#1677ff;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+h1{font-size:clamp(40px,5.5vw,64px);line-height:1.08;letter-spacing:-1.5px;color:#07183b;margin:14px 0 20px}
 h1 span{color:#1677ff}
-.hero p{max-width:690px;color:#64748b;font-size:18px;line-height:1.7}
-.buttons{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap}
-.btn{display:inline-block;padding:13px 20px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:800}
-.primary{background:#1677ff;color:#fff}.secondary{border:1px solid #dbe4ee;color:#12213a;background:#fff}
-.section{padding:78px 24px}.soft{background:#f6f9fc}
+.hero p{max-width:720px;color:#64748b;font-size:18px;line-height:1.7}
+.buttons{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 22px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:800;cursor:pointer;border:none;transition:all .2s}
+.primary{background:#1677ff;color:#fff}.primary:hover{background:#005be3}
+.secondary{border:1px solid #dbe4ee;color:#12213a;background:#fff}.secondary:hover{border-color:#1677ff;color:#1677ff}
+.section{padding:78px 24px}.soft{background:#f6f9fc}.dark-section{background:#07183b;color:#fff}
 .inner{max-width:1180px;margin:auto}
-h2{font-size:36px;line-height:1.15;color:#07183b;margin:8px 0 12px}
+h2{font-size:34px;line-height:1.15;color:#07183b;margin:8px 0 12px}
+.dark-section h2{color:#fff}
 .lead{max-width:720px;color:#64748b;line-height:1.7}
+.dark-section .lead{color:#b0c2de}
+
+/* Filter Tabs */
+.filter-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0 10px}
+.tab-btn{padding:9px 18px;border-radius:20px;border:1px solid #dbe4ee;background:#fff;color:#53627a;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s}
+.tab-btn.active,.tab-btn:hover{background:#1677ff;color:#fff;border-color:#1677ff}
+
+/* Grid & Cards */
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px}
-.card{background:#fff;border:1px solid #e1e8f0;border-radius:16px;padding:24px}
-.card .n{color:#1677ff;font-size:12px;font-weight:900}
-.card h3{font-size:17px;margin:10px 0 7px}.card p{color:#64748b;font-size:14px;line-height:1.6;margin:0}
-.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:34px}
-.cta{background:#07183b;color:#fff}.cta h2{color:#fff}.cta p{color:#c7d3e4}
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px}
+.card{background:#fff;border:1px solid #e1e8f0;border-radius:16px;padding:24px;display:flex;flex-col;justify-content:space-between;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(0,0,0,0.05);border-color:#b8d4ff}
+.card .n{color:#1677ff;font-size:11px;font-weight:900;letter-spacing:1px;text-transform:uppercase}
+.card h3{font-size:17px;margin:10px 0 8px;color:#07183b}.card p{color:#64748b;font-size:13.5px;line-height:1.6;margin:0 0 16px}
+.card-link{color:#1677ff;font-size:12.5px;font-weight:800;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.card-link:hover{text-decoration:underline}
+
+/* Kalkulator Interaktif */
+.calc-box{background:#fff;border:1px solid #dbe4ee;border-radius:20px;padding:32px;margin-top:30px;box-shadow:0 10px 30px rgba(0,0,0,0.03)}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.calc-inputs{display:flex;flex-direction:column;gap:20px}
+.input-group label{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:#10213d;margin-bottom:8px}
+.input-group label span{color:#1677ff}
+input[type=range]{width:100%;accent-color:#1677ff;cursor:pointer}
+.result-box{background:linear-gradient(135deg,#f0f6ff 0%,#e1edff 100%);border:1px solid #b8d4ff;border-radius:16px;padding:28px;text-align:center}
+.result-val{font-size:36px;font-weight:900;color:#1677ff;margin:10px 0}
+
+/* Modal Popup */
+.modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(7,24,59,0.7);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.active{display:flex}
+.modal-content{background:#fff;border-radius:20px;max-width:540px;width:100%;padding:32px;position:relative;box-shadow:0 20px 40px rgba(0,0,0,0.2)}
+.modal-close{position:absolute;top:20px;right:20px;border:none;background:none;font-size:22px;font-weight:bold;color:#64748b;cursor:pointer}
+.modal-tag{font-size:11px;font-weight:800;color:#1677ff;letter-spacing:1px;text-transform:uppercase}
+.modal-title{font-size:22px;color:#07183b;margin:8px 0 12px}
+.modal-desc{color:#53627a;font-size:14px;line-height:1.6;margin-bottom:20px}
+.modal-list{background:#f6f9fc;padding:16px;border-radius:12px;margin-bottom:24px;font-size:13px;color:#334155}
+.modal-list li{margin-bottom:6px}.modal-list li:last-child{margin-bottom:0}
+
+/* Form Section */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.form-control{width:100%;padding:12px 16px;border:1px solid #cbd5e1;border-radius:10px;font-size:14px;font-family:inherit}
+.form-control:focus{outline:none;border-color:#1677ff;box-shadow:0 0 0 3px rgba(22,119,255,0.15)}
+
 footer{padding:30px 24px;background:#06142d;color:#aab8cb;font-size:12px}
-.footer-inner{max-width:1180px;margin:auto}
+.footer-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+
+@media(max-width:960px){.projects{grid-template-columns:1fr 1fr}.calc-grid{grid-template-columns:1fr}}
 @media(max-width:800px){.nav{display:none}.grid{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.grid,.projects{grid-template-columns:1fr}.hero{padding:70px 24px}.section{padding:60px 24px}.brand-logo{width:48px;height:48px;flex-basis:48px}}
+@media(max-width:560px){.grid,.projects,.form-grid{grid-template-columns:1fr}.hero{padding:70px 24px}.section{padding:50px 24px}.brand-logo{width:48px;height:48px;flex-basis:48px}}
 </style>
 </head>
 <body>
@@ -53,10 +94,7 @@ footer{padding:30px 24px;background:#06142d;color:#aab8cb;font-size:12px}
 <header class="header">
   <div class="header-inner">
     <a class="brand" href="./index.html" aria-label="URAI SOLUTION">
-      <img class="brand-logo"
-           src="./urai-solution-master-logo.png"
-           width="54" height="54"
-           alt="Logo URAI SOLUTION">
+      <img class="brand-logo" src="./urai-solution-master-logo.png" width="54" height="54" alt="Logo URAI SOLUTION" onerror="this.src='logo.jpeg'">
       <span>
         <span class="brand-name">URAI SOLUTION</span>
         <span class="brand-tag">DIGITAL SOLUTION</span>
@@ -64,8 +102,9 @@ footer{padding:30px 24px;background:#06142d;color:#aab8cb;font-size:12px}
     </a>
     <nav class="nav">
       <a href="#layanan">Layanan</a>
-      <a href="#proses">Proses</a>
+      <a href="#simulasi">Simulasi ROI</a>
       <a href="#portfolio">Portfolio</a>
+      <a href="#proses">Proses</a>
       <a href="#kontak">Kontak</a>
     </nav>
   </div>
@@ -75,10 +114,10 @@ footer{padding:30px 24px;background:#06142d;color:#aab8cb;font-size:12px}
   <div class="hero-inner">
     <div class="eyebrow">DIGITAL SOLUTION PARTNER</div>
     <h1>Mengurai Masalah,<br><span>Membangun Solusi Digital.</span></h1>
-    <p>Setiap kebutuhan memiliki cara kerja yang berbeda. URAI SOLUTION membantu mengubah kebutuhan, masalah, dan proses kerja menjadi solusi digital yang sesuai.</p>
+    <p>Setiap kebutuhan memiliki alur kerja yang unik. URAI SOLUTION membantu mengubah kendala operasional, administrasi, dan pengolahan data bisnis Anda menjadi aplikasi digital tepat guna.</p>
     <div class="buttons">
-      <a class="btn primary" href="https://wa.me/6282254127596" target="_blank" rel="noopener">Konsultasikan Kebutuhan</a>
-      <a class="btn secondary" href="#portfolio">Lihat Portfolio</a>
+      <a class="btn primary" href="https://wa.me/6282254127596?text=Halo%20URAI%20SOLUTION,%20saya%20ingin%20konsultasi%20pembuatan%20aplikasi." target="_blank" rel="noopener">Konsultasikan Kebutuhan</a>
+      <a class="btn secondary" href="#portfolio">Lihat Portfolio Aplikasi</a>
     </div>
   </div>
 </section>
@@ -87,54 +126,315 @@ footer{padding:30px 24px;background:#06142d;color:#aab8cb;font-size:12px}
   <div class="inner">
     <div class="eyebrow">SOLUSI</div>
     <h2>Solusi digital sesuai kebutuhan.</h2>
-    <p class="lead">Tidak semua bisnis membutuhkan sistem yang sama. Solusi disesuaikan dengan kebutuhan dan proses kerja masing-masing.</p>
+    <p class="lead">Kami tidak menjual sistem kaku. Setiap solusi dirancang fleksibel mengikuti proses kerja dan skala bisnis masing-masing konsumen.</p>
     <div class="grid">
-      <article class="card"><div class="n">01</div><h3>Custom Web Application</h3><p>Aplikasi web yang mengikuti kebutuhan dan alur kerja bisnis.</p></article>
-      <article class="card"><div class="n">02</div><h3>Website Development</h3><p>Website profesional untuk bisnis, layanan, portfolio, dan kebutuhan lainnya.</p></article>
-      <article class="card"><div class="n">03</div><h3>Automation & Data</h3><p>Menyederhanakan pekerjaan repetitif melalui otomatisasi dan pengolahan data.</p></article>
-      <article class="card"><div class="n">04</div><h3>Business System</h3><p>Sistem untuk membantu administrasi, transaksi, data, dan pelaporan.</p></article>
+      <article class="card"><div class="n">01</div><h3>Custom Web Application</h3><p>Aplikasi web kustom yang dirancang presisi mengikuti alur kerja bisnis internal Anda.</p></article>
+      <article class="card"><div class="n">02</div><h3>Website Development</h3><p>Website profesional untuk profil perusahaan, katalog produk, portofolio, dan landing page.</p></article>
+      <article class="card"><div class="n">03</div><h3>Automation & Data</h3><p>Menyederhanakan pekerjaan rutin melalui otomatisasi ekspor data dan skrip pemrosesan cepat.</p></article>
+      <article class="card"><div class="n">04</div><h3>Business System</h3><p>Sistem terpadu untuk pengawasan operasional, transaksi kasir, HRIS, hingga kontrol armada.</p></article>
     </div>
   </div>
 </section>
 
+<!-- KALKULATOR SIMULASI INTERAKTIF -->
+<section class="section soft" id="simulasi">
+  <div class="inner">
+    <div class="eyebrow">MODUL INTERAKTIF</div>
+    <h2>Simulasi Potensi Hemat Operasional.</h2>
+    <p class="lead">Uji estimasi efisiensi pengeluaran bahan bakar armada bisnis Anda dengan sistem pemantauan BBM URAI SOLUTION.</p>
+    
+    <div class="calc-box">
+      <div class="calc-grid">
+        <div class="calc-inputs">
+          <div class="input-group">
+            <label>Jumlah Armada Kendaraan: <span id="vFleet">10 Unit</span></label>
+            <input type="range" id="inFleet" min="2" max="100" value="10" step="1" oninput="calcROI()">
+          </div>
+          <div class="input-group">
+            <label>Rata-Rata Jarak Tempuh Harian: <span id="vKm">120 KM/Hari</span></label>
+            <input type="range" id="inKm" min="30" max="400" value="120" step="10" oninput="calcROI()">
+          </div>
+          <div class="input-group">
+            <label>Harga BBM per Liter: <span id="vPrice">Rp 10.500</span></label>
+            <input type="range" id="inPrice" min="10000" max="20000" value="10500" step="500" oninput="calcROI()">
+          </div>
+        </div>
+        <div class="result-box">
+          <div style="font-size:12px;font-weight:800;color:#53627a;letter-spacing:1px;text-transform:uppercase">ESTIMASI EFISIENSI BULANAN (15%)</div>
+          <div class="result-val" id="vResult">Rp 7.371.000</div>
+          <p style="font-size:13px;color:#64748b;margin:0 0 18px">Mencakup eliminasi manipulasi nota BBM, analisis rasio KM/L, dan pengawasan rute pengemudi.</p>
+          <a class="btn primary" style="width:100%;text-align:center" href="https://wa.me/6282254127596?text=Halo%20URAI%20SOLUTION,%20saya%20tertarik%20penerapan%20Sistem%20FleetOps%20setelah%20mencoba%20simulasi." target="_blank">Terapkan Di Armada Saya →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO LENGKAP DENGAN FILTER TAB -->
+<section class="section" id="portfolio">
+  <div class="inner">
+    <div class="eyebrow">PORTFOLIO APLIKASI</div>
+    <h2>Proyek yang telah dikembangkan.</h2>
+    <p class="lead">Berikut adalah jajaran aplikasi kustom dan otomatisasi sistem yang telah kami bangun untuk berbagai sektor industri.</p>
+    
+    <!-- Filter Tabs -->
+    <div class="filter-tabs">
+      <button class="tab-btn active" onclick="filterApp('all', this)">Semua Proyek</button>
+      <button class="tab-btn" onclick="filterApp('ops', this)">Operasional & Logistik</button>
+      <button class="tab-btn" onclick="filterApp('hr', this)">HR & SDM</button>
+      <button class="tab-btn" onclick="filterApp('finance', this)">Keuangan & Retail</button>
+      <button class="tab-btn" onclick="filterApp('edu', this)">Komunitas & Edukasi</button>
+    </div>
+
+    <div class="projects" id="projectContainer">
+      <!-- 1. FleetOps 360 -->
+      <article class="card item-app ops">
+        <div>
+          <div class="n">LOGISTIK & FLEET</div>
+          <h3>Aplikasi FleetOps 360 & BBM</h3>
+          <p>Pengawasan efisiensi bahan bakar, rasio KM/Liter, log odometer pengemudi, dan alert pemborosan armada.</p>
+        </div>
+        <span class="card-link" onclick="openModal('FleetOps 360 & Pemantau BBM', 'Aplikasi pengawasan armada fisik terintegrasi.', ['Monitoring BBM Real-time & Rasio KM/L', 'Input Odometer & Foto Struk Pengemudi', 'Deteksi Anomali Pemborosan BBM', 'Laporan Pengeluaran Armada Cabang'])">Detail Fitur →</span>
+      </article>
+
+      <!-- 2. Renzani Konveksi -->
+      <article class="card item-app finance">
+        <div>
+          <div class="n">MANUFAKTUR & GARMEN</div>
+          <h3>Aplikasi Konveksi Renzani.co</h3>
+          <p>Sistem pembukuan konveksi, perhitungan RAB produksi garmen terperinci, cetak struk thermal, dan arus kas.</p>
+        </div>
+        <span class="card-link" onclick="openModal('Aplikasi Konveksi Renzani.co', 'Solusi manajemen pembukuan dan RAB konveksi.', ['Perhitungan RAB Komponen Jahit & Potong', 'Pencatatan Order & Transaksi Pembayaran', 'Cetak Struk Thermal 58mm & Export JPG/PDF', 'Laporan Cashflow & Backup Excel'])">Detail Fitur →</span>
+      </article>
+
+      <!-- 3. Absensi GPS Selfie -->
+      <article class="card item-app hr">
+        <div>
+          <div class="n">SDM & LAPANGAN</div>
+          <h3>Absensi Online GPS & Selfie</h3>
+          <p>Aplikasi absensi karyawan dengan verifikasi lokasi GPS, foto selfie, manajemen jadwal, dan rekap laporan.</p>
+        </div>
+        <span class="card-link" onclick="openModal('Absensi Online GPS & Selfie', 'Sistem absensi seluler presisi tinggi.', ['Validasi Radius Geofencing GPS', 'Kamera Live Selfie Antikecurangan', 'Pengajuan Izin, Sakit, & Lembur', 'Export Rekap Absensi Bulanan'])">Detail Fitur →</span>
+      </article>
+
+      <!-- 4. HRIS & Payroll -->
+      <article class="card item-app hr">
+        <div>
+          <div class="n">ENTERPRISE HR</div>
+          <h3>Aplikasi HRIS & Payroll</h3>
+          <p>Pengelolaan data induk karyawan, struktur gaji, komponen tunjangan, potong absen, dan slip gaji otomatis.</p>
+        </div>
+        <span class="card-link" onclick="openModal('Aplikasi HRIS & Payroll', 'Sistem manajemen SDM & penggajian.', ['Database Induk Karyawan & Dokumen', 'Kalkulasi Gaji Pokok, Tunjangan, & BPJS', 'Cetak Slip Gaji Digital', 'Laporan Rekapitulasi Payroll'])">Detail Fitur →</span>
+      </article>
+
+      <!-- 5. Kartu Stok Gudang -->
+      <article class="card item-app ops">
+        <div>
+          <div class="n">INVENTARIS</div>
+          <h3>Aplikasi Kartu Stok Gudang</h3>
+          <p>Pencatatan pergerakan barang masuk/keluar, penyesuaian stok opname, dan peringatan batas minimum barang.</p>
+        </div>
+        <span class="card-link" onclick="openModal('Aplikasi Kartu Stok Gudang', 'Manajemen mutasi stok gudang presisi.', ['Pencatatan Barang Masuk & Keluar', 'Mutasi Stok Antargudang', 'Alert Batas Stok Minimum', 'Kartu Stok Digital & History Opname'])">Detail Fitur →</span>
+      </article>
+
+      <!-- 6. Aplikasi CRM -->
+      <article class="card item-app finance">
+        <div>
+          <div class="n">SALES & MARKETING</div>
+          <h3>Aplikasi CRM & Penjualan</h3>
+          <p>Manajemen data calon klien (leads), riwayat interaksi tim sales, pipa penjualan, dan analisis performa omzet.</p>
+        </div>
+        <span class="card-link" onclick="openModal('Aplikasi CRM & Penjualan', 'Pengelolaan hubungan pelanggan & sales pipeline.', ['Database Klien & History Contact', 'Tracking Pipeline Prospek Sales', 'Reminder Follow-up Otomatis', 'Dashboard Analisis Konversi Omzet'])">Detail Fitur →</span>
+      </article>
+
+      <!-- 7. Pemantauan Biaya PT. ACK -->
+      <article class="card item-app ops">
+        <div>
+          <div class="n">OPERATIONAL CONTROL</div>
+          <h3>Pemantauan Biaya PT. ACK</h3>
+          <p>Sistem kontrol dan pengawasan pengeluaran biaya operasional proyek/cabang untuk verifikasi klaim dan audit.</p>
+        </div>
+        <span class="card-link" onclick="openModal('Pemantauan Biaya PT. ACK', 'Sistem kontrol pengeluaran biaya operasional.', ['Verifikasi Dokumen Klaim Bertingkat', 'Pengelompokan Biaya Pos Operasional', 'Pencegahan Risiko Fraud/Bocor Biaya', 'Audit Trail & Rekapitulasi Finansial'])">Detail Fitur →</span>
+      </article>
+
+      <!-- 8. Aplikasi Dana Duka -->
+      <article class="card item-app edu">
+        <div>
+          <div class="n">KOMUNITAS & SOSIAL</div>
+          <h3>Aplikasi Dana Duka</h3>
+          <p>Sistem pengelolaan iuran kas, pencatatan keanggotaan paguyuban, serta distribusi bantuan klaim dana duka.</p>
+        </div>
+        <span class="card-link" onclick="openModal('Aplikasi Dana Duka', 'Sistem iuran & bantuan sosial komunitas.', ['Database Anggota Paguyuban & Keluarga', 'Pencatatan Iuran Bulanan Rutin', 'Pengajuan & Verifikasi Klaim Santunan', 'Laporan Transparansi Kas Komunitas'])">Detail Fitur →</span>
+      </article>
+
+      <!-- 9. Lembar Induk Siswa -->
+      <article class="card item-app edu">
+        <div>
+          <div class="n">AKADEMIK & SEKOAH</div>
+          <h3>Aplikasi Lembar Induk Siswa</h3>
+          <p>Penyimpanan basis data akademis siswa, rekam jejak nilai, mutasi kelas, serta cetak buku induk digital.</p>
+        </div>
+        <span class="card-link" onclick="openModal('Aplikasi Lembar Induk Siswa', 'Database akademik & buku induk sekolah.', ['Profil Lengkap Siswa & Wali Murid', 'Riwayat Akademik & Prestasi', 'Pencatatan Mutasi & Kelulusan', 'Cetak Lembar Induk Standar DIKNAS'])">Detail Fitur →</span>
+      </article>
+
+      <!-- 10. Aplikasi Laundry -->
+      <article class="card item-app finance">
+        <div>
+          <div class="n">RETAIL & JASA</div>
+          <h3>Aplikasi Laundry & Keuangan</h3>
+          <p>Sistem kasir POS laundry, pelacakan status cuci/setrika, pesanan WhatsApp, dan laporan keuangan harian.</p>
+        </div>
+        <span class="card-link" onclick="openModal('Aplikasi Laundry & Keuangan', 'Sistem POS & operasional usaha laundry.', ['Pencatatan Nota Kiloan & Satuan', 'Tracking Status: Cuci, Setrika, Selesai', 'Notifikasi Kirim Nota WA ke Pelanggan', 'Laporan Omzet & Keuangan Kasir'])">Detail Fitur →</span>
+      </article>
+
+      <!-- 11. Script Ekspor Data Xhistoris -->
+      <article class="card item-app edu">
+        <div>
+          <div class="n">OTOMATISASI DATA</div>
+          <h3>Ekspor Data Xhistoris → Excel</h3>
+          <p>Skrip otomatisasi untuk penarikan data mentah dari sistem, pembersihan data, dan penyusunan format Excel.</p>
+        </div>
+        <span class="card-link" onclick="openModal('Script Ekspor Data Xhistoris', 'Otomatisasi pengolahan & konversi data.', ['Ekstraksi Data Otomatis Tanpa Manual', 'Format Ulang Kolom & Pembersihan Data', 'Export Direct ke File Excel (.xlsx)', 'Memotong Jam Kerja Administrasi'])">Detail Fitur →</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CARA KERJA -->
 <section class="section soft" id="proses">
   <div class="inner">
     <div class="eyebrow">CARA KERJA</div>
     <h2>Dari masalah menjadi solusi.</h2>
-    <p class="lead">Ceritakan kebutuhan Anda. Kami bantu menguraikan, merancang, dan membangun solusinya.</p>
+    <p class="lead">Ceritakan kebutuhan Anda. Kami bantu menguraikan, merancang, dan membangun solusinya secara terstruktur.</p>
     <div class="grid">
-      <article class="card"><div class="n">01</div><h3>Ceritakan</h3><p>Sampaikan masalah atau kebutuhan.</p></article>
-      <article class="card"><div class="n">02</div><h3>Uraikan</h3><p>Pahami proses dan kebutuhan.</p></article>
-      <article class="card"><div class="n">03</div><h3>Rancang</h3><p>Susun solusi dan alur sistem.</p></article>
-      <article class="card"><div class="n">04</div><h3>Bangun</h3><p>Kembangkan dan implementasikan.</p></article>
+      <article class="card"><div class="n">01</div><h3>Ceritakan</h3><p>Sampaikan kendala operasional atau ide sistem yang diinginkan.</p></article>
+      <article class="card"><div class="n">02</div><h3>Uraikan</h3><p>Kami bedah alur bisnis dan memetakan alur data yang efisien.</p></article>
+      <article class="card"><div class="n">03</div><h3>Rancang</h3><p>Penyusunan desain antarmuka dan struktur basis data aplikasi.</p></article>
+      <article class="card"><div class="n">04</div><h3>Bangun</h3><p>Pengembangan sistem, pengujian, hingga tahap implementasi.</p></article>
     </div>
   </div>
 </section>
 
-<section class="section" id="portfolio">
+<!-- KONTAK FORM SECTION -->
+<section class="section dark-section" id="kontak">
   <div class="inner">
-    <div class="eyebrow">PORTFOLIO</div>
-    <h2>Salah satu contoh project.</h2>
-    <p class="lead">Setiap project dibuat berdasarkan permintaan dan kebutuhan konsumen.</p>
-    <div class="projects">
-      <article class="card"><div class="n">CUSTOM PROJECT</div><h3>Aplikasi Pembukuan Konveksi</h3><p>Web application untuk pembukuan, transaksi, laporan, master data, serta opsi Cloud maupun Local.</p></article>
-      <article class="card"><div class="n">CUSTOM PROJECT</div><h3>Absensi Online GPS & Selfie</h3><p>Sistem absensi dengan lokasi, selfie, pengelolaan pegawai, dan rekap laporan.</p></article>
-      <article class="card"><div class="n">AUTOMATION</div><h3>Otomatisasi Script → Excel</h3><p>Membantu mengurangi pekerjaan manual dalam proses pengolahan dan ekstraksi data.</p></article>
-      <article class="card"><div class="n">CUSTOM WEB APPLICATION</div><h3>Business Application</h3><p>Sistem dapat disesuaikan dengan kebutuhan dan alur kerja masing-masing konsumen.</p></article>
+    <div style="max-width:600px">
+      <div class="eyebrow" style="color:#1677ff">MARI BERDISKUSI</div>
+      <h2>Punya kebutuhan digital?</h2>
+      <p class="lead">Tidak perlu datang dengan konsep aplikasi yang sudah jadi. Ceritakan masalah dan proses kerja Anda, kami bantu uraikan solusinya.</p>
     </div>
+
+    <form onsubmit="kirimWA(event)" style="margin-top:28px;max-width:700px">
+      <div class="form-grid">
+        <input type="text" id="nama" class="form-control" placeholder="Nama Anda / Perusahaan" required>
+        <select id="kategori" class="form-control">
+          <option value="Fleet & BBM System">FleetOps & BBM System</option>
+          <option value="Aplikasi Pembukuan / POS">Sistem Pembukuan / POS</option>
+          <option value="HRIS & Absensi GPS">HRIS & Absensi Online</option>
+          <option value="Custom Web Application">Custom Application Lainnya</option>
+        </select>
+      </div>
+      <textarea id="pesan" rows="4" class="form-control" style="margin-top:16px" placeholder="Jelaskan secara ringkas kendala atau kebutuhan aplikasi Anda..." required></textarea>
+      
+      <div style="margin-top:20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+        <button type="submit" class="btn primary">Kirim Pesan via WhatsApp →</button>
+        <span style="font-size:13px;color:#aab8cb">Atau WA langsung: <strong>0822 5412 7596</strong></span>
+      </div>
+    </form>
   </div>
 </section>
 
-<section class="section cta" id="kontak">
-  <div class="inner">
-    <div class="eyebrow">MARI BERDISKUSI</div>
-    <h2>Punya kebutuhan digital?</h2>
-    <p class="lead">Tidak perlu datang dengan konsep aplikasi yang sudah jadi. Ceritakan masalah dan proses kerja Anda. Kami bantu menguraikannya menjadi solusi digital.</p>
-    <p style="margin:18px 0 0;color:#fff;font-weight:800">WhatsApp: 0822 5412 7596</p>
-    <div class="buttons"><a class="btn primary" href="https://wa.me/6282254127596" target="_blank" rel="noopener">Konsultasikan Kebutuhan Anda</a></div>
+<footer>
+  <div class="footer-inner">
+    <div><strong>URAI SOLUTION</strong> — Mengurai Masalah, Membangun Solusi Digital. © 2026</div>
+    <div style="color:#64748b">Pontianak, Kalimantan Barat — Indonesia</div>
   </div>
-</section>
+</footer>
 
-<footer><div class="footer-inner"><strong>URAI SOLUTION</strong> — Mengurai Masalah, Membangun Solusi Digital. © 2026</div></footer>
+<!-- MODAL POPUP PREVIEW -->
+<div class="modal-overlay" id="appModal" onclick="closeModalOutside(event)">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-tag">DETAIL MODUL SISTEM</div>
+    <h3 class="modal-title" id="mTitle">Nama Aplikasi</h3>
+    <p class="modal-desc" id="mDesc">Deskripsi ringkas sistem.</p>
+    <ul class="modal-list" id="mList"></ul>
+    <a class="btn primary" id="mBtn" style="width:100%;text-align:center" href="#" target="_blank">Konsultasikan Proyek Ini →</a>
+  </div>
+</div>
+
+<script>
+// Kalkulator ROI BBM
+function calcROI() {
+  const fleet = parseInt(document.getElementById('inFleet').value);
+  const km = parseInt(document.getElementById('inKm').value);
+  const price = parseInt(document.getElementById('inPrice').value);
+
+  document.getElementById('vFleet').innerText = fleet + " Unit";
+  document.getElementById('vKm').innerText = km + " KM/Hari";
+  document.getElementById('vPrice').innerText = "Rp " + price.toLocaleString('id-ID');
+
+  // Formula: (Fleet * KM * 26 hari) / 8 km/l * harga * 15% hemat
+  const totalKm = fleet * km * 26;
+  const liters = totalKm / 8;
+  const monthlyCost = liters * price;
+  const savings = Math.round(monthlyCost * 0.15);
+
+  document.getElementById('vResult').innerText = "Rp " + savings.toLocaleString('id-ID');
+}
+
+// Filter Portfolio
+function filterApp(category, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.item-app').forEach(card => {
+    if (category === 'all' || card.classList.contains(category)) {
+      card.style.display = 'flex';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// Modal System
+function openModal(title, desc, features) {
+  document.getElementById('mTitle').innerText = title;
+  document.getElementById('mDesc').innerText = desc;
+  
+  const list = document.getElementById('mList');
+  list.innerHTML = '';
+  features.forEach(f => {
+    const li = document.createElement('li');
+    li.innerText = '✓ ' + f;
+    list.appendChild(li);
+  });
+
+  const waText = encodeURIComponent(`Halo URAI SOLUTION, saya tertarik diskusi mengenai ${title}.`);
+  document.getElementById('mBtn').href = `https://wa.me/6282254127596?text=${waText}`;
+
+  document.getElementById('appModal').classList.add('active');
+}
+
+function closeModal() {
+  document.getElementById('appModal').classList.remove('active');
+}
+
+function closeModalOutside(e) {
+  if (e.target.id === 'appModal') closeModal();
+}
+
+// WhatsApp Form Direct
+function kirimWA(e) {
+  e.preventDefault();
+  const nama = document.getElementById('nama').value;
+  const kat = document.getElementById('kategori').value;
+  const pesan = document.getElementById('pesan').value;
+
+  const text = `Halo URAI SOLUTION,%0ANama: ${encodeURIComponent(nama)}%0AKebutuhan: ${encodeURIComponent(kat)}%0APesan: ${encodeURIComponent(pesan)}`;
+  window.open(`https://wa.me/6282254127596?text=${text}`, '_blank');
+}
+</script>
+
 </body>
 </html>
