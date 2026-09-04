@@ -5,198 +5,219 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URAI SOLUTION — Operational Tech & Enterprise Systems</title>
     
+    <!-- Embedded Favicon Anti-Break -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     
+    <!-- Chart.js Engine -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
+    <!-- PURE BULLETPROOF CSS (TIDAK BERGANTUNG PADA FRAMEWORK LUAR) -->
     <style>
-        *, ::before, ::after { box-sizing: border-box; margin: 0; padding: 0; }
+        /* RESET & BASE STYLES */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body {
-            background-color: #030611;
-            color: #F8FAFC;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            line-height: 1.5;
+            background-color: #030611 !important;
+            color: #F8FAFC !important;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
         a { color: inherit; text-decoration: none; }
         button, input, select, textarea { font-family: inherit; }
 
-        /* Container Layout */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        /* CONTAINER LAYOUT */
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
 
-        /* Glassmorphism Panel */
+        /* GLASSMORPHISM PANELS */
         .glass-panel {
             background: rgba(15, 23, 42, 0.75);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
+            border-radius: 20px;
         }
         .glass-panel-hover {
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .glass-panel-hover:hover {
             border-color: rgba(0, 122, 255, 0.5);
-            box-shadow: 0 0 25px rgba(0, 122, 255, 0.2);
-            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 122, 255, 0.18);
+            transform: translateY(-4px);
         }
 
-        /* Header Navigation */
+        /* HEADER NAVIGATION */
         header {
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 100;
-            height: 80px;
-            background: rgba(3, 6, 17, 0.85);
-            backdrop-filter: blur(12px);
+            height: 84px;
+            background: rgba(3, 6, 17, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
             align-items: center;
         }
         .nav-wrapper { display: flex; align-items: center; justify-content: space-between; width: 100%; }
-        .brand { display: flex; align-items: center; gap: 12px; }
+        .brand { display: flex; align-items: center; gap: 14px; }
         .brand-logo-box {
-            padding: 4px; background: #0F172A; border: 1px solid rgba(255,255,255,0.15); border-radius: 12px;
+            padding: 5px; background: #0F172A; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
         }
-        .brand-logo { width: 40px; height: 40px; border-radius: 8px; object-fit: contain; }
-        .brand-text { display: flex; flex-direction: column; }
-        .brand-title { font-size: 20px; font-weight: 800; color: #FFF; letter-spacing: 1px; }
+        .brand-logo { width: 42px; height: 42px; border-radius: 10px; object-fit: contain; display: block; }
+        .brand-title-wrap { display: flex; align-items: center; gap: 8px; }
+        .brand-title { font-size: 22px; font-weight: 800; color: #FFFFFF; letter-spacing: 1px; }
         .brand-badge {
-            font-size: 10px; font-weight: 700; color: #00D2FF; background: rgba(0, 210, 255, 0.1);
-            padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(0, 210, 255, 0.3); display: inline-block; margin-left: 6px;
+            font-size: 10px; font-weight: 800; color: #00D2FF; background: rgba(0, 210, 255, 0.12);
+            padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(0, 210, 255, 0.3); font-family: 'JetBrains Mono', monospace;
         }
-        .brand-sub { font-size: 10px; font-family: 'JetBrains Mono', monospace; color: #94A3B8; text-transform: uppercase; letter-spacing: 1.5px; }
+        .brand-sub { font-size: 11px; font-family: 'JetBrains Mono', monospace; color: #94A3B8; text-transform: uppercase; letter-spacing: 1.5px; margin-top: -2px; }
 
-        .nav-links { display: flex; gap: 28px; }
-        .nav-links a { font-size: 14px; font-weight: 500; color: #CBD5E1; transition: color 0.2s; }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a { font-size: 14px; font-weight: 600; color: #CBD5E1; transition: color 0.2s; }
         .nav-links a:hover { color: #00D2FF; }
 
-        /* Buttons */
+        /* BUTTONS */
         .btn-primary {
             background: linear-gradient(135deg, #007AFF 0%, #00D2FF 100%);
-            color: #FFF; font-weight: 700; font-size: 13px;
-            padding: 10px 20px; border-radius: 10px; border: none; cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3); transition: all 0.2s;
-            display: inline-flex; align-items: center; justify-content: center;
+            color: #FFFFFF !important; font-weight: 700; font-size: 13px;
+            padding: 12px 24px; border-radius: 12px; border: none; cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 122, 255, 0.35); transition: all 0.25s ease;
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
-        .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-primary:hover { opacity: 0.95; transform: translateY(-2px); box-shadow: 0 6px 25px rgba(0, 210, 255, 0.45); }
         .btn-secondary {
-            background: rgba(15, 23, 42, 0.8); color: #00D2FF; font-weight: 700; font-size: 13px;
-            padding: 10px 20px; border-radius: 10px; border: 1px solid rgba(0, 210, 255, 0.4); cursor: pointer;
-            transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center;
+            background: rgba(15, 23, 42, 0.8); color: #00D2FF !important; font-weight: 700; font-size: 13px;
+            padding: 12px 24px; border-radius: 12px; border: 1px solid rgba(0, 210, 255, 0.4); cursor: pointer;
+            transition: all 0.25s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
         }
-        .btn-secondary:hover { background: rgba(0, 210, 255, 0.1); }
+        .btn-secondary:hover { background: rgba(0, 210, 255, 0.12); border-color: #00D2FF; transform: translateY(-2px); }
 
-        /* Hero Section */
-        .hero { padding-top: 160px; padding-bottom: 80px; position: relative; }
+        /* HERO SECTION */
+        .hero { padding-top: 170px; padding-bottom: 90px; position: relative; }
+        .hero-glow {
+            position: absolute; top: 20%; left: 50%; transform: translate(-50%, -50%);
+            width: 600px; height: 300px; background: rgba(0, 122, 255, 0.12); filter: blur(120px); border-radius: 50%; pointer-events: none;
+        }
         .eyebrow {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 6px 14px; border-radius: 20px; background: rgba(0, 122, 255, 0.1);
-            border: 1px solid rgba(0, 122, 255, 0.3); font-size: 12px; font-family: 'JetBrains Mono', monospace; color: #00D2FF; margin-bottom: 20px;
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 6px 16px; border-radius: 30px; background: rgba(0, 122, 255, 0.1);
+            border: 1px solid rgba(0, 122, 255, 0.3); font-size: 12px; font-family: 'JetBrains Mono', monospace; color: #00D2FF; margin-bottom: 24px;
         }
-        .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: #00D2FF; box-shadow: 0 0 10px #00D2FF; }
-        .hero-title { font-size: 48px; font-weight: 800; line-height: 1.15; color: #FFF; margin-bottom: 20px; max-width: 850px; }
-        .hero-title span { background: linear-gradient(90deg, #60A5FA, #00D2FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-desc { font-size: 18px; color: #94A3B8; max-width: 720px; margin-bottom: 32px; line-height: 1.6; }
+        .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: #00D2FF; box-shadow: 0 0 12px #00D2FF; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
-        /* Section Header */
+        .hero-title { font-size: 52px; font-weight: 800; line-height: 1.15; color: #FFFFFF; margin-bottom: 24px; max-width: 900px; letter-spacing: -1px; }
+        .hero-title span { background: linear-gradient(90deg, #60A5FA, #00D2FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-desc { font-size: 18px; color: #94A3B8; max-width: 760px; margin-bottom: 36px; line-height: 1.7; }
+
+        /* SECTION HEADER */
         .section-header { margin-bottom: 40px; }
         .section-tag { font-size: 12px; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #00D2FF; letter-spacing: 2px; text-transform: uppercase; }
-        .section-title { font-size: 32px; font-weight: 800; color: #FFF; margin-top: 4px; }
-        .section-desc { font-size: 14px; color: #94A3B8; margin-top: 4px; }
+        .section-title { font-size: 34px; font-weight: 800; color: #FFFFFF; margin-top: 6px; letter-spacing: -0.5px; }
+        .section-desc { font-size: 15px; color: #94A3B8; margin-top: 6px; }
 
-        /* Grid Layouts */
+        /* GRID SYSTEM */
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
         .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 
-        /* Card Component */
-        .card { padding: 24px; display: flex; flex-direction: column; justify-content: space-between; }
-        .card-tag { font-size: 10px; font-family: 'JetBrains Mono', monospace; padding: 4px 8px; border-radius: 4px; display: inline-block; }
+        /* CARDS COMPONENT */
+        .card { padding: 28px; display: flex; flex-direction: column; justify-content: space-between; }
+        .card-top { margin-bottom: 20px; }
+        .card-tag-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+        .card-tag { font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700; padding: 4px 10px; border-radius: 6px; display: inline-block; }
         .tag-blue { background: rgba(0, 122, 255, 0.15); color: #60A5FA; border: 1px solid rgba(0, 122, 255, 0.3); }
         .tag-amber { background: rgba(245, 158, 11, 0.15); color: #FBBF24; border: 1px solid rgba(245, 158, 11, 0.3); }
         .tag-emerald { background: rgba(16, 185, 129, 0.15); color: #34D399; border: 1px solid rgba(16, 185, 129, 0.3); }
         .tag-purple { background: rgba(168, 85, 247, 0.15); color: #C084FC; border: 1px solid rgba(168, 85, 247, 0.3); }
+        .tag-cyan { background: rgba(0, 210, 255, 0.15); color: #00D2FF; border: 1px solid rgba(0, 210, 255, 0.3); }
 
-        .card-title { font-size: 18px; font-weight: 700; color: #FFF; margin: 12px 0 8px 0; }
-        .card-desc { font-size: 13px; color: #94A3B8; line-height: 1.6; margin-bottom: 20px; }
-        .card-footer { border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 12px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-family: 'JetBrains Mono', monospace; color: #CBD5E1; }
+        .card-ver { font-size: 11px; font-family: 'JetBrains Mono', monospace; color: #64748B; }
+        .card-title { font-size: 19px; font-weight: 700; color: #FFFFFF; margin-bottom: 10px; line-height: 1.35; }
+        .card-desc { font-size: 13px; color: #94A3B8; line-height: 1.65; }
+        .card-footer { border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 14px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-family: 'JetBrains Mono', monospace; color: #CBD5E1; }
 
-        /* Filter Tabs */
-        .filter-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+        /* FILTER TABS */
+        .filter-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 32px; }
         .tab-btn {
-            padding: 8px 16px; border-radius: 8px; font-size: 12px; font-family: 'JetBrains Mono', monospace;
+            padding: 10px 20px; border-radius: 10px; font-size: 12px; font-family: 'JetBrains Mono', monospace; font-weight: 700;
             background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); color: #94A3B8; cursor: pointer; transition: all 0.2s;
         }
-        .tab-btn.active, .tab-btn:hover { background: #007AFF; color: #FFF; border-color: #007AFF; }
+        .tab-btn.active, .tab-btn:hover { background: #007AFF; color: #FFFFFF; border-color: #007AFF; box-shadow: 0 4px 15px rgba(0,122,255,0.3); }
 
-        /* Calculator Range Sliders */
-        .calc-box { padding: 32px; border-radius: 24px; background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .range-group { margin-bottom: 20px; }
-        .range-label { display: flex; justify-content: space-between; font-size: 13px; font-family: 'JetBrains Mono', monospace; color: #CBD5E1; margin-bottom: 8px; }
+        /* CALCULATOR */
+        .calc-box { padding: 40px; border-radius: 28px; background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .range-group { margin-bottom: 24px; }
+        .range-label { display: flex; justify-content: space-between; font-size: 13px; font-family: 'JetBrains Mono', monospace; color: #CBD5E1; margin-bottom: 10px; }
         .range-label span { font-weight: 700; color: #00D2FF; }
-        input[type=range] { width: 100%; height: 6px; background: #1E293B; border-radius: 4px; accent-color: #00D2FF; cursor: pointer; }
+        input[type=range] { width: 100%; height: 8px; background: #1E293B; border-radius: 6px; accent-color: #00D2FF; cursor: pointer; }
 
         .result-card {
-            background: linear-gradient(135deg, rgba(0, 122, 255, 0.15) 0%, rgba(15, 23, 42, 0.9) 100%);
-            border: 1px solid rgba(0, 210, 255, 0.3); border-radius: 16px; padding: 24px; text-align: center;
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.18) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid rgba(0, 210, 255, 0.35); border-radius: 20px; padding: 32px; text-align: center;
         }
-        .result-amount { font-size: 36px; font-weight: 900; color: #00D2FF; margin: 10px 0; }
+        .result-amount { font-size: 38px; font-weight: 900; color: #00D2FF; margin: 12px 0; text-shadow: 0 0 20px rgba(0,210,255,0.3); }
 
-        /* Form Controls */
+        /* FORM CONTROLS */
         .form-control {
-            width: 100%; padding: 12px 16px; border-radius: 10px; background: rgba(3, 6, 17, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.15); color: #FFF; font-size: 14px; margin-bottom: 16px;
+            width: 100%; padding: 14px 18px; border-radius: 12px; background: rgba(3, 6, 17, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.15); color: #FFFFFF; font-size: 14px; margin-bottom: 18px;
         }
-        .form-control:focus { outline: none; border-color: #007AFF; box-shadow: 0 0 10px rgba(0, 122, 255, 0.3); }
+        .form-control:focus { outline: none; border-color: #007AFF; box-shadow: 0 0 15px rgba(0, 122, 255, 0.35); }
 
-        /* Modal Overlay */
+        /* MODAL POPUP */
         .modal-overlay {
-            position: fixed; inset: 0; z-index: 200; background: rgba(3, 6, 17, 0.85); backdrop-filter: blur(8px);
-            display: none; align-items: center; justify-content: center; padding: 20px;
+            position: fixed; inset: 0; z-index: 200; background: rgba(3, 6, 17, 0.88); backdrop-filter: blur(12px);
+            display: none; align-items: center; justify-content: center; padding: 24px;
         }
         .modal-overlay.active { display: flex; }
-        .modal-body { max-width: 500px; width: 100%; padding: 28px; border-radius: 20px; background: #0F172A; border: 1px solid rgba(255, 255, 255, 0.15); position: relative; }
-        .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; color: #94A3B8; font-size: 20px; cursor: pointer; }
+        .modal-body { max-width: 520px; width: 100%; padding: 32px; border-radius: 24px; background: #0F172A; border: 1px solid rgba(255, 255, 255, 0.18); position: relative; box-shadow: 0 25px 60px rgba(0,0,0,0.6); }
+        .modal-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: #94A3B8; font-size: 22px; cursor: pointer; }
 
-        /* Responsive */
-        @media (max-width: 900px) {
+        /* RESPONSIVE BREAKPOINTS */
+        @media (max-width: 1024px) {
             .grid-3 { grid-template-columns: repeat(2, 1fr); }
-            .hero-title { font-size: 36px; }
-            .nav-links { display: none; }
+            .hero-title { font-size: 42px; }
         }
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             .grid-3, .grid-2 { grid-template-columns: 1fr; }
-            .hero-title { font-size: 28px; }
-            .hero { padding-top: 120px; }
+            .hero-title { font-size: 32px; }
+            .hero { padding-top: 130px; }
+            .nav-links { display: none; }
+            .calc-box { padding: 24px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- NAVBAR HEADER -->
     <header>
         <div class="container nav-wrapper">
             <a href="./index.html" class="brand">
                 <div class="brand-logo-box">
-                    <img src="./urai-solution-master-logo.png" onerror="this.onerror=null; this.src='logo.jpeg';" alt="Logo" class="brand-logo">
+                    <img src="./urai-solution-master-logo.png" onerror="this.onerror=null; this.src='logo.jpeg';" alt="URAI SOLUTION Logo" class="brand-logo">
                 </div>
-                <div class="brand-text">
+                <div class="brand-title-wrap">
                     <div>
                         <span class="brand-title">URAI</span>
                         <span class="brand-badge">SOLUTION</span>
+                        <div class="brand-sub">Digital Solution Partner</div>
                     </div>
-                    <span class="brand-sub">Digital Solution Partner</span>
                 </div>
             </a>
 
             <nav class="nav-links">
                 <a href="#featured">FleetOps 360</a>
                 <a href="#calculator">Simulasi ROI</a>
-                <a href="#portfolio">Portofolio (11+)</a>
+                <a href="#portfolio">Portofolio (14)</a>
                 <a href="#ecosystem">Ekosistem</a>
                 <a href="#contact">Kontak</a>
             </nav>
@@ -207,72 +228,81 @@
         </div>
     </header>
 
+    <!-- HERO SECTION -->
     <section class="hero container">
+        <div class="hero-glow"></div>
         <div class="eyebrow">
             <span class="pulse-dot"></span>
             MENGURAI MASALAH, MEMBANGUN SOLUSI DIGITAL
         </div>
         <h1 class="hero-title">
-            Solusi Sistem & Aplikasi Kustom untuk <span>Efisiensi Operasional Bisnis</span>
+            Mengurai Masalah,<br><span>Membangun Solusi Digital Tepat Guna.</span>
         </h1>
         <p class="hero-desc">
-            Setiap bisnis memiliki alur kerja yang unik. URAI SOLUTION membantu mengubah kendala operasional, administrasi, manajemen armada, dan pengolahan data Anda menjadi sistem aplikasi digital yang presisi dan mudah digunakan.
+            Setiap kebutuhan bisnis memiliki alur kerja yang unik. URAI SOLUTION membantu mengubah kendala operasional, administrasi, manajemen armada, dan pengolahan data Anda menjadi sistem aplikasi digital yang presisi, ringan, dan efektif.
         </p>
-        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-            <a href="#portfolio" class="btn-primary" style="padding: 12px 24px; font-size: 14px;">
-                Jelajahi 11+ Portofolio Aplikasi
+        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+            <a href="#portfolio" class="btn-primary" style="padding: 14px 28px; font-size: 14px;">
+                Jelajahi 14 Portofolio Aplikasi →
             </a>
-            <a href="#calculator" class="btn-secondary" style="padding: 12px 24px; font-size: 14px;">
+            <a href="#calculator" class="btn-secondary" style="padding: 14px 28px; font-size: 14px;">
                 ⚡ Coba Simulasi Hemat BBM
             </a>
         </div>
     </section>
 
-    <section id="featured" class="container" style="padding: 60px 20px;">
+    <!-- FEATURED MODULE: FLEET OPS 360 -->
+    <section id="featured" class="container" style="padding: 60px 24px;">
         <div class="section-header">
             <span class="section-tag">FEATURED SYSTEM MODULE</span>
             <h2 class="section-title">Aplikasi FleetOps 360 & Pemantau BBM</h2>
-            <p class="section-desc">Pengawasan Efisiensi BBM, Rasio KM/Liter & Deteksi Pemborosan Armada Operasional</p>
+            <p class="section-desc">Pengawasan Efisiensi BBM, Rasio KM/Liter & Deteksi Pemborosan Armada Operasional Lapangan</p>
         </div>
 
-        <div class="glass-panel" style="padding: 28px;">
-            <div class="grid-3" style="margin-bottom: 24px;">
-                <div class="glass-panel" style="padding: 20px;">
+        <div class="glass-panel" style="padding: 32px;">
+            <div class="grid-3" style="margin-bottom: 28px;">
+                <div class="glass-panel" style="padding: 22px;">
                     <span style="font-size: 11px; font-family: 'JetBrains Mono'; color: #94A3B8;">RATA-RATA KONSUMSI BBM</span>
-                    <div style="font-size: 28px; font-weight: 900; color: #FFF; margin-top: 4px;">9.85 <span style="font-size: 12px; color: #00D2FF;">KM / Liter</span></div>
-                    <span style="font-size: 11px; color: #34D399; font-family: 'JetBrains Mono';">✓ Normal (Sesuai Standar)</span>
+                    <div style="font-size: 32px; font-weight: 900; color: #FFF; margin-top: 4px;">9.85 <span style="font-size: 13px; color: #00D2FF;">KM / Liter</span></div>
+                    <span style="font-size: 11px; color: #34D399; font-family: 'JetBrains Mono';">✓ Normal (Sesuai Standar Pabrikan)</span>
                 </div>
-                <div class="glass-panel" style="padding: 20px;">
-                    <span style="font-size: 11px; font-family: 'JetBrains Mono'; color: #94A3B8;">TOTAL PENGELUARAN BBM</span>
-                    <div style="font-size: 28px; font-weight: 900; color: #FFF; margin-top: 4px;">Rp 42.850.000</div>
-                    <span style="font-size: 11px; color: #94A3B8; font-family: 'JetBrains Mono';">28 Kendaraan Terpantau</span>
+                <div class="glass-panel" style="padding: 22px;">
+                    <span style="font-size: 11px; font-family: 'JetBrains Mono'; color: #94A3B8;">TOTAL PENGELUARAN BBM (BULAN INI)</span>
+                    <div style="font-size: 32px; font-weight: 900; color: #FFF; margin-top: 4px;">Rp 42.850.000</div>
+                    <span style="font-size: 11px; color: #94A3B8; font-family: 'JetBrains Mono';">28 Kendaraan Operasional Terpantau</span>
                 </div>
-                <div class="glass-panel" style="padding: 20px; border-color: rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.05);">
+                <div class="glass-panel" style="padding: 22px; border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.08);">
                     <span style="font-size: 11px; font-family: 'JetBrains Mono'; color: #F87171;">ALERT ANOMALI PEMBOROSAN</span>
-                    <div style="font-size: 28px; font-weight: 900; color: #EF4444; margin-top: 4px;">1 Unit</div>
-                    <span style="font-size: 11px; color: #F87171; font-family: 'JetBrains Mono';">! Unit KB-8842-XX: Drop 34%</span>
+                    <div style="font-size: 32px; font-weight: 900; color: #EF4444; margin-top: 4px;">1 Unit</div>
+                    <span style="font-size: 11px; color: #F87171; font-family: 'JetBrains Mono';">! Unit KB-8842-XX: Drop KM/L 34%</span>
                 </div>
             </div>
 
             <div class="grid-3">
-                <div style="grid-column: span 2; height: 260px;" class="glass-panel">
+                <div style="grid-column: span 2; height: 280px;" class="glass-panel">
                     <canvas id="fuelChart"></canvas>
                 </div>
-                <div class="glass-panel" style="padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="glass-panel" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
                     <div>
-                        <span style="font-size: 12px; font-weight: 700; color: #CBD5E1; display: block; margin-bottom: 12px;">Log Pengisian Driver Terakhir</span>
-                        <div style="font-size: 12px; font-family: 'JetBrains Mono'; color: #94A3B8; display: flex; flex-direction: column; gap: 8px;">
-                            <div style="padding: 8px; background: rgba(3, 6, 17, 0.8); border-radius: 6px; display: flex; justify-content: space-between;">
-                                <span>Truck Box - KB 8122 XX</span>
+                        <span style="font-size: 13px; font-weight: 700; color: #CBD5E1; display: block; margin-bottom: 14px;">Log Pengisian Driver Terakhir</span>
+                        <div style="font-size: 12px; font-family: 'JetBrains Mono'; color: #94A3B8; display: flex; flex-direction: column; gap: 10px;">
+                            <div style="padding: 10px; background: rgba(3, 6, 17, 0.85); border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="color: #FFF; font-weight: 700;">Truck Box - KB 8122 XX</div>
+                                    <div style="font-size: 10px; color: #64748B;">Driver: Supriadi | 45 Liter</div>
+                                </div>
                                 <span style="color: #34D399; font-weight: 700;">10.2 KM/L</span>
                             </div>
-                            <div style="padding: 8px; background: rgba(3, 6, 17, 0.8); border-radius: 6px; display: flex; justify-content: space-between;">
-                                <span>Pickup GranMax - KB 9011 YY</span>
+                            <div style="padding: 10px; background: rgba(3, 6, 17, 0.85); border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div style="color: #FFF; font-weight: 700;">Pickup GranMax - KB 9011 YY</div>
+                                    <div style="font-size: 10px; color: #64748B;">Driver: Budi H. | 30 Liter</div>
+                                </div>
                                 <span style="color: #34D399; font-weight: 700;">11.1 KM/L</span>
                             </div>
                         </div>
                     </div>
-                    <button onclick="openModal('FleetOps 360', 'Sistem pelacak BBM dan Odometer real-time armada bisnis.', ['Validasi Foto Struk & Odometer', 'Deteksi Manipulasi Nota', 'Analisis Rasio KM/L Per Driver'])" class="btn-secondary" style="width: 100%; margin-top: 12px;">
+                    <button onclick="openModal('FleetOps 360 & BBM', 'Sistem pelacak BBM dan Odometer real-time armada bisnis.', ['Validasi Foto Struk & Odometer', 'Deteksi Manipulasi Nota', 'Analisis Rasio KM/L Per Driver', 'Laporan Pengeluaran Armada Cabang'])" class="btn-secondary" style="width: 100%; margin-top: 14px;">
                         Detail Fitur FleetOps 360 →
                     </button>
                 </div>
@@ -280,12 +310,13 @@
         </div>
     </section>
 
-    <section id="calculator" class="container" style="padding: 60px 20px;">
+    <!-- CALCULATOR -->
+    <section id="calculator" class="container" style="padding: 60px 24px;">
         <div class="calc-box">
             <div class="section-header" style="text-align: center;">
                 <span class="section-tag">INTERACTIVE CALCULATOR</span>
                 <h2 class="section-title">Simulasi Potensi Penghematan Biaya Armada</h2>
-                <p class="section-desc">Geser slider di bawah untuk mengestimasi efisiensi BBM bulanan yang bisa dihemat.</p>
+                <p class="section-desc">Geser slider di bawah untuk mengestimasi efisiensi BBM bulanan yang bisa dihemat dengan sistem URAI SOLUTION.</p>
             </div>
 
             <div class="grid-2" style="align-items: center;">
@@ -305,4 +336,462 @@
                 </div>
 
                 <div class="result-card">
-                    <span style="font-size: 11px; font-family: 'JetBrains Mono'; color: #94A3B8; text-transform: uppercase;">ESTIMASI HEM
+                    <span style="font-size: 11px; font-family: 'JetBrains Mono'; color: #94A3B8; text-transform: uppercase; tracking-widest: 1px;">ESTIMASI HEMAT BBM BULANAN (EFISIENSI 15%)</span>
+                    <div class="result-amount" id="lblResult">Rp 7.371.000</div>
+                    <p style="font-size: 13px; color: #94A3B8; margin-bottom: 24px; line-height: 1.6;">Mencakup eliminasi manipulasi nota BBM, analisis rasio KM/L, dan pengawasan rute pengemudi.</p>
+                    <a href="https://wa.me/6282254127596?text=Halo%20URAI%20SOLUTION,%20saya%20tertarik%20sistem%20FleetOps%20setelah%20mencoba%20simulasi%20penghematan." target="_blank" class="btn-primary" style="width: 100%;">
+                        Terapkan Sistem Ini Di Armada Saya →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO GRID (14 APPS COMPLETE) -->
+    <section id="portfolio" class="container" style="padding: 60px 24px;">
+        <div class="section-header">
+            <span class="section-tag">COMPLETE PORTFOLIO (14 APLIKASI)</span>
+            <h2 class="section-title">Aplikasi Yang Telah Kami Bangun</h2>
+            <p class="section-desc">Solusi teruji yang dirancang khusus untuk memecahkan kendala operasional, administrasi, dan finansial konsumen</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+            <button onclick="filterApp('all', this)" class="tab-btn active">Semua Proyek (14)</button>
+            <button onclick="filterApp('ops', this)" class="tab-btn">Operasional & Logistik</button>
+            <button onclick="filterApp('hr', this)" class="tab-btn">HR & SDM</button>
+            <button onclick="filterApp('finance', this)" class="tab-btn">Keuangan & POS</button>
+            <button onclick="filterApp('edu', this)" class="tab-btn">Komunitas & Edukasi</button>
+        </div>
+
+        <div class="grid-3" id="portfolioContainer">
+
+            <!-- 1. FleetOps 360 -->
+            <div class="glass-panel glass-panel-hover card port-item ops">
+                <div class="card-top">
+                    <div class="card-tag-row">
+                        <span class="card-tag tag-blue">LOGISTIK & FLEET</span>
+                        <span class="card-ver">v2.1 Web App</span>
+                    </div>
+                    <h3 class="card-title">Aplikasi FleetOps 360 & BBM</h3>
+                    <p class="card-desc">Pengawasan efisiensi bahan bakar, rasio KM/Liter, log odometer pengemudi, dan alert pemborosan armada operasional.</p>
+                </div>
+                <div>
+                    <button onclick="openModal('FleetOps 360 & BBM', 'Sistem pelacak BBM dan Odometer real-time armada.', ['Validasi Foto Struk & Odometer', 'Deteksi Anomali Pemborosan BBM', 'Analisis KM/L Per Driver'])" class="btn-secondary" style="width: 100%; margin-bottom: 14px;">Lihat Rincian Fitur →</button>
+                    <div class="card-footer"><span>• Anomaly Alert</span><span style="color: #60A5FA;">Fleet Ready</span></div>
+                </div>
+            </div>
+
+            <!-- 2. Renzani Konveksi -->
+            <div class="glass-panel glass-panel-hover card port-item finance">
+                <div class="card-top">
+                    <div class="card-tag-row">
+                        <span class="card-tag tag-amber">MANUFAKTUR & GARMEN</span>
+                        <span class="card-ver">v3.4.3 Robust</span>
+                    </div>
+                    <h3 class="card-title">Aplikasi Konveksi Renzani.co</h3>
+                    <p class="card-desc">Sistem pembukuan konveksi, kalkulasi RAB produksi garmen terperinci, cetak struk thermal 58mm, dan arus kas.</p>
+                </div>
+                <div>
+                    <button onclick="openModal('Aplikasi Konveksi Renzani.co', 'Solusi pembukuan dan RAB produksi garmen.', ['Perhitungan RAB Komponen Jahit & Potong', 'Pencatatan Order & Transaksi', 'Cetak Struk Thermal 58mm', 'Laporan Cashflow & Backup Excel'])" class="btn-secondary" style="width: 100%; margin-bottom: 14px;">Lihat Rincian Fitur →</button>
+                    <div class="card-footer"><span>• Thermal Receipt</span><span style="color: #60A5FA;">Production</span></div>
+                </div>
+            </div>
+
+            <!-- 3. Absensi GPS Selfie -->
+            <div class="glass-panel glass-panel-hover card port-item hr">
+                <div class="card-top">
+                    <div class="card-tag-row">
+                        <span class="card-tag tag-emerald">SDM & LAPANGAN</span>
+                        <span class="card-ver">Mobile Web</span>
+                    </div>
+                    <h3 class="card-title">Absensi Online GPS & Selfie App</h3>
+                    <p class="card-desc">Aplikasi absensi karyawan dengan verifikasi lokasi GPS, foto live selfie, jadwal kerja, dan rekap laporan.</p>
+                </div>
+                <div>
+                    <button onclick="openModal('Absensi Online GPS & Selfie', 'Sistem absensi seluler presisi tinggi.', ['Validasi Geofencing GPS', 'Kamera Live Selfie Anti-cheat', 'Export Rekap Absensi Bulanan'])" class="btn-secondary" style="width: 100%; margin-bottom: 14px;">Lihat Rincian Fitur →</button>
+                    <div class="card-footer"><span>• Geofencing GPS</span><span style="color: #60A5FA;">Mobile Web</span></div>
+                </div>
+            </div>
+
+            <!-- 4. HRIS Payroll -->
+            <div class="glass-panel glass-panel-hover card port-item hr">
+                <div class="card-top">
+                    <div class="card-tag-row">
+                        <span class="card-tag tag-emerald">ENTERPRISE HR</span>
+                        <span class="card-ver">v1.8 System</span>
+                    </div>
+                    <h3 class="card-title">Aplikasi HRIS dan Payroll</h3>
+                    <p class="card-desc">Pengelolaan data induk karyawan, struktur gaji, komponen tunjangan, potongan absen, dan slip gaji digital.</p>
+                </div>
+                <div>
+                    <button onclick="openModal('Aplikasi HRIS & Payroll', 'Sistem manajemen SDM & penggajian perusahaan.', ['Database Induk Karyawan', 'Kalkulasi Gaji Pokok & Tunjangan', 'Cetak Slip Gaji Digital'])" class="btn-secondary" style="width: 100%; margin-bottom: 14px;">Lihat Rincian Fitur →</button>
+                    <div class="card-footer"><span>• Auto Payroll</span><span style="color: #60A5FA;">Enterprise</span></div>
+                </div>
+            </div>
+
+            <!-- 5. Kartu Stok -->
+            <div class="glass-panel glass-panel-hover card port-item ops">
+                <div class="card-top">
+                    <div class="card-tag-row">
+                        <span class="card-tag tag-blue">INVENTARIS</span>
+                        <span class="card-ver">v2.0 Inventory</span>
+                    </div>
+                    <h3 class="card-title">Aplikasi Kartu Stok Gudang</h3>
+                    <p class="card-desc">Pencatatan mutasi barang masuk/keluar, penyesuaian stok opname, serta peringatan otomatis batas minimum stok.</p>
+                </div>
+                <div>
+                    <button onclick="openModal('Kartu Stok Gudang', 'Manajemen mutasi stok gudang presisi.', ['Pencatatan Barang Masuk & Keluar', 'Alert Batas Stok Minimum', 'Kartu Stok Digital & History Opname'])" class="btn-secondary" style="width: 100%; margin-bottom: 14px;">Lihat Rincian Fitur →</button>
+                    <div class="card-footer"><span>• Mutasi Realtime</span><span style="color: #60A5FA;">Inventory</span></div>
+                </div>
+            </div>
+
+            <!-- 6. CRM -->
+            <div class="glass-panel glass-panel-hover card port-item finance">
+                <div class="card-top">
+                    <div class="card-tag-row">
+                        <span class="card-tag tag-amber">SALES & CRM</span>
+                        <span class="card-ver">v1.5 Pipeline</span>
+                    </div>
+                    <h3 class="card-title">Aplikasi CRM & Sales Pipeline</h3>
+                    <p class="card-desc">Manajemen data calon klien (leads), riwayat interaksi sales, pelacakan pipa penjualan, dan analisis konversi.</p>
+                </div>
+                <div>
+                    <button onclick="openModal('CRM & Sales Pipeline', 'Pengelolaan hubungan pelanggan & sales pipeline.', ['Database Klien & History Contact', 'Tracking Pipeline Prospek Sales', 'Dashboard Konversi Omzet'])" class="btn-secondary" style="width: 100%; margin-bottom: 14px;">Lihat Rincian Fitur →</button>
+                    <div class="card-footer"><span>• Lead Tracking</span><span style="color: #60A5FA;">Sales Growth</span></div>
+                </div>
+            </div>
+
+            <!-- 7. PT. ACK -->
+            <div class="glass-panel glass-panel-hover card port-item ops">
+                <div class="card-top">
+                    <div class="card-tag-row">
+                        <span class="card-tag tag-blue">OPERATIONAL CONTROL</span>
+                        <span class="card-ver">Custom B2B</span>
+                    </div>
+                    <h3 class="card-title">Aplikasi Pemantauan Biaya PT. ACK</h3>
+                    <p class="card-desc">Sistem pengawasan pengeluaran biaya operasional cabang/proyek untuk verifikasi klaim bertingkat dan audit.</p>
+                </div>
+                <div>
+                    <button onclick="openModal('Pemantauan Biaya PT. ACK', 'Sistem kontrol pengeluaran biaya operasional.', ['Verifikasi Dokumen Klaim Bertingkat', 'Pencegahan Risiko Fraud Biaya', 'Audit Trail & Rekapitulasi'])" class="btn-secondary" style="width: 100%; margin-bottom: 14px;">Lihat Rincian Fitur →</button>
+                    <div class="card-footer"><span>• Fraud Control</span><span style="color: #60A5FA;">Audit Ready</span></div>
+                </div>
+            </div>
+
+            <!-- 8. Pemantau BBM Kendaraan -->
+            <div class="glass-panel glass-panel-hover card port-item ops">
+                <div class="card-top">
+                    <div class="card-tag-row">
+                        <span class="card-tag tag-blue">FLEET MANAGEMENT</span>
+                        <span class="card-ver">v1.3 Fleet</span>
+                    </div>
+                    <h3 class="card-title">Aplikasi Pemantau BBM Kendaraan</h3>
+                    <p class="card-desc">Pencatatan riwayat pengisian BBM per kendaraan operasional, pencocokan odometer, dan analisis efisiensi jarak.</p>
+                </div>
+                <div>
+                    <button onclick="openModal('Pemantau BBM Kendaraan', 'Pencatatan & analisis BBM kendaraan operasional.', ['Riwayat Pengisian BBM & Biaya', 'Kalkulasi Otomatis Jarak Tempuh', 'Laporan Bulanan Per Kendaraan'])" class="btn-secondary" style="width: 100%; margin-bottom: 14px;">Lihat Rincian Fitur →</button>
+                    <div class="card-footer"><span>• Fuel Log</span><span style="color: #60A5FA;">Operations</span></div>
+                </div>
+            </div>
+
+            <!-- 9. Dana Duka -->
+            <div class="glass-panel glass-panel-hover card port-item edu">
+                <div class="card-top">
+                    <div class="card-tag-row">
+                        <span class="card-tag tag-purple">KOMUNITAS & SOSIAL</span>
+                        <span class="card-ver">v1.2 Social</span>
+                    </div>
+                    <h3 class="card-title">Aplikasi Dana Duka Paguyuban</h3>
+                    <p class="card-desc">Sistem pengelolaan iuran kas bulanan, pencatatan keanggotaan paguyuban, serta distribusi santunan dana duka.</p>
+                </div>
+                <div>
+                    <button onclick="openModal('Aplikasi Dana Duka', 'Sistem iuran & bantuan sosial komunitas.', ['Database Anggota Paguyuban', 'Pencatatan Iuran Bulanan Rutin', 'Pengajuan & Verifikasi Klaim'])" class="btn-secondary" style="width: 100%; margin-bottom: 14px;">Lihat Rincian Fitur →</button>
+                    <div class="card-footer"><span>• Transparansi Kas</span><span style="color: #60A5FA;">Community</span></div>
+                </div>
+            </div>
+
+            <!-- 10. Lembar Induk -->
+            <div class="glass-panel glass-panel-hover card port-item edu">
+                <div class="card-top">
+                    <div class="card-tag-row">
+                        <span class="card-tag tag-purple">AKADEMIK & SEKOLAH</span>
+                        <span class="card-ver">v2.0 Academic</span>
+                    </div>
+                    <h3 class="card-title">Aplikasi Lembar Induk Siswa</h3>
+                    <p class="card-desc">Penyimpanan basis data akademis siswa, rekam jejak nilai, mutasi kelas, serta pencetakan buku induk digital.</p>
+                </div>
+                <div>
+                    <button onclick="openModal('Lembar Induk Siswa', 'Database akademik & buku induk sekolah.', ['Profil Lengkap Siswa & Wali', 'Riwayat Akademik & Prestasi', 'Cetak Lembar Induk DIKNAS'])" class="btn-secondary" style="width: 100%; margin-bottom: 14px;">Lihat Rincian Fitur →</button>
+                    <div class="card-footer"><span>• Buku Induk</span><span style="color: #60A5FA;">Education</span></div>
+                </div>
+            </div>
+
+            <!-- 11. Laundry -->
+            <div class="glass-panel glass-panel-hover card port-item finance">
+                <div class="card-top">
+                    <div class="card-tag-row">
+                        <span class="card-tag tag-cyan">RETAIL & JASA</span>
+                        <span class="card-ver">v1.4 Laundry</span>
+                    </div>
+                    <h3 class="card-title">Aplikasi Laundry & Keuangan POS</h3>
+                    <p class="card-desc">Sistem kasir POS laundry kiloan/satuan, pelacakan status cuci, notifikasi WhatsApp, dan laporan laba rugi.</p>
+                </div>
+                <div>
+                    <button onclick="openModal('Aplikasi Laundry & POS', 'Sistem POS & operasional usaha laundry.', ['Pencatatan Nota Kiloan & Satuan', 'Tracking Status: Cuci / Selesai', 'Notifikasi Kirim Nota WA'])" class="btn-secondary" style="width: 100%; margin-bottom: 14px;">Lihat Rincian Fitur →</button>
+                    <div class="card-footer"><span>• WA Notification</span><span style="color: #60A5FA;">POS Retail</span></div>
+                </div>
+            </div>
+
+            <!-- 12. Script Otomatisasi -->
+            <div class="glass-panel glass-panel-hover card port-item edu">
+                <div class="card-top">
+                    <div class="card-tag-row">
+                        <span class="card-tag tag-purple">OTOMATISASI DATA</span>
+                        <span class="card-ver">Python Script</span>
+                    </div>
+                    <h3 class="card-title">Script Ekspor Data Xhistoris → Excel</h3>
+                    <p class="card-desc">Skrip otomatisasi penarikan data mentah dari sistem, pembersihan data, dan penyusunan format Excel otomatis.</p>
+                </div>
+                <div>
+                    <button onclick="openModal('Script Ekspor Xhistoris', 'Otomatisasi pengolahan & konversi data.', ['Ekstraksi Data Otomatis', 'Format Ulang Kolom & Pembersihan', 'Export Direct File Excel (.xlsx)'])" class="btn-secondary" style="width: 100%; margin-bottom: 14px;">Lihat Rincian Fitur →</button>
+                    <div class="card-footer"><span>• Excel Converter</span><span style="color: #60A5FA;">Automation</span></div>
+                </div>
+            </div>
+
+            <!-- 13. Workflow Cabang -->
+            <div class="glass-panel glass-panel-hover card port-item ops">
+                <div class="card-top">
+                    <div class="card-tag-row">
+                        <span class="card-tag tag-blue">ENTERPRISE OPS</span>
+                        <span class="card-ver">v2.4 System</span>
+                    </div>
+                    <h3 class="card-title">Web Operasional & Workflow Cabang</h3>
+                    <p class="card-desc">Otomatisasi alur kerja administrasi operasional internal cabang, pengarsipan digital, dan verifikasi kelayakan.</p>
+                </div>
+                <div>
+                    <button onclick="openModal('Web Workflow Cabang', 'Otomatisasi alur kerja operasional cabang.', ['Verifikasi Dokumen Cabang Digital', 'Digital Archiving & Workflow History', 'Standardisasi Alur Kerja Admin'])" class="btn-secondary" style="width: 100%; margin-bottom: 14px;">Lihat Rincian Fitur →</button>
+                    <div class="card-footer"><span>• Workflow Engine</span><span style="color: #60A5FA;">Enterprise</span></div>
+                </div>
+            </div>
+
+            <!-- 14. Website Portofolio -->
+            <div class="glass-panel glass-panel-hover card port-item finance">
+                <div class="card-top">
+                    <div class="card-tag-row">
+                        <span class="card-tag tag-cyan">WEB DEVELOPMENT</span>
+                        <span class="card-ver">v1.0 Live</span>
+                    </div>
+                    <h3 class="card-title">Website Portofolio URAI SOLUTION</h3>
+                    <p class="card-desc">Landing page korporat modern berbasis Dark Mode, responsif, dilengkapi modul simulasi interaktif & integrasi WA.</p>
+                </div>
+                <div>
+                    <button onclick="openModal('Website Portofolio Corporate', 'Landing page bisnis high-end & interaktif.', ['Desain Dark Navy High-End', 'Modul Kalkulator ROI Interaktif', 'Integrasi Direct WhatsApp Form'])" class="btn-secondary" style="width: 100%; margin-bottom: 14px;">Lihat Rincian Fitur →</button>
+                    <div class="card-footer"><span>• Corporate Web</span><span style="color: #60A5FA;">Branding</span></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ECOSYSTEM & INSTAGRAM -->
+    <section id="ecosystem" class="container" style="padding: 60px 24px;">
+        <div class="grid-2" style="align-items: center;">
+            <div>
+                <span class="section-tag">OUR CORE PHILOSOPHY</span>
+                <h2 class="section-title">Mengapa URAI SOLUTION Berbeda?</h2>
+                <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 18px;">
+                    <div style="display: flex; gap: 14px;">
+                        <span style="font-weight: 800; color: #00D2FF; font-family: 'JetBrains Mono'; font-size: 16px;">01</span>
+                        <div>
+                            <h4 style="color: #FFF; font-weight: 700; font-size: 15px; margin-bottom: 2px;">Fokus Masalah Nyata Lapangan</h4>
+                            <p style="font-size: 13px; color: #94A3B8;">Sistem dirancang presisi memotong jam kerja administrasi dan mencegah kebocoran biaya.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 14px;">
+                        <span style="font-weight: 800; color: #00D2FF; font-family: 'JetBrains Mono'; font-size: 16px;">02</span>
+                        <div>
+                            <h4 style="color: #FFF; font-weight: 700; font-size: 15px; margin-bottom: 2px;">Performa Tinggi & Ringan</h4>
+                            <p style="font-size: 13px; color: #94A3B8;">Aplikasi cepat terbuka meski di jaringan internet minim atau HP berspesifikasi standar.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 14px;">
+                        <span style="font-weight: 800; color: #00D2FF; font-family: 'JetBrains Mono'; font-size: 16px;">03</span>
+                        <div>
+                            <h4 style="color: #FFF; font-weight: 700; font-size: 15px; margin-bottom: 2px;">Tanpa Biaya Mengikat</h4>
+                            <p style="font-size: 13px; color: #94A3B8;">Model kepemilikan sistem fleksibel tanpa langganan bulanan tersembunyi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel" style="padding: 32px; border-color: rgba(168, 85, 247, 0.35); background: linear-gradient(135deg, rgba(88, 28, 135, 0.22) 0%, rgba(15, 23, 42, 0.95) 100%);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <span class="card-tag tag-purple">KNOWLEDGE ECOSYSTEM</span>
+                    <span style="font-size: 11px; font-family: 'JetBrains Mono'; color: #C084FC;">Official Instagram</span>
+                </div>
+                <h3 style="font-size: 26px; font-weight: 800; color: #FFF; margin-bottom: 6px;">@korporatpedia</h3>
+                <p style="font-size: 13px; color: #CBD5E1; margin-bottom: 24px; line-height: 1.6;">Platform edukasi profesional yang dikembangkan oleh URAI SOLUTION untuk membagikan wawasan produktivitas kerja, otomatisasi operasional, dan analisis metrik penjualan (sales metrics).</p>
+                <a href="https://www.instagram.com/korporatpedia/" target="_blank" rel="noopener" class="btn-primary" style="width: 100%; background: linear-gradient(90deg, #A855F7, #EC4899);">
+                    Kunjungi Instagram @korporatpedia ↗
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section id="contact" class="container" style="padding: 60px 24px 100px 24px;">
+        <div class="glass-panel" style="padding: 40px; max-width: 820px; margin: 0 auto;">
+            <div class="section-header" style="text-align: center;">
+                <span class="section-tag">START A PROJECT</span>
+                <h2 class="section-title">Konsultasikan Kebutuhan Sistem Anda</h2>
+                <p class="section-desc">Ceritakan masalah operasional Anda. Pesan akan terhubung langsung ke WhatsApp URAI SOLUTION.</p>
+            </div>
+
+            <form onsubmit="sendWA(event)">
+                <div class="grid-2" style="gap: 16px;">
+                    <input type="text" id="txtName" placeholder="Nama Lengkap / Perusahaan" class="form-control" required>
+                    <select id="txtType" class="form-control">
+                        <option value="FleetOps 360 & BBM">FleetOps 360 & BBM System</option>
+                        <option value="Aplikasi Konveksi / RAB">RAB & Management Konveksi (Renzani.co)</option>
+                        <option value="Absensi GPS & HRIS">Absensi GPS Selfie & HRIS Payroll</option>
+                        <option value="Kartu Stok Gudang">Aplikasi Kartu Stok Gudang</option>
+                        <option value="Sistem Kasir Laundry/POS">Smart POS / Laundry Cashflow</option>
+                        <option value="Custom Application">Sistem Kustom Lainnya</option>
+                    </select>
+                </div>
+                <textarea id="txtMsg" rows="4" placeholder="Jelaskan secara singkat kendala atau kebutuhan aplikasi yang ingin dibangun..." class="form-control" required></textarea>
+                <button type="submit" class="btn-primary" style="width: 100%; padding: 16px; font-size: 15px;">
+                    KIRIM PESAN VIA WHATSAPP →
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="border-top: 1px solid rgba(255,255,255,0.08); padding: 32px 0; font-size: 12px; font-family: 'JetBrains Mono'; color: #64748B;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+            <span>© 2026 URAI SOLUTION — Mengurai Masalah, Membangun Solusi Digital.</span>
+            <span>Pontianak, Kalimantan Barat — Indonesia</span>
+        </div>
+    </footer>
+
+    <!-- MODAL PREVIEW -->
+    <div class="modal-overlay" id="appModal" onclick="closeModalOutside(event)">
+        <div class="modal-body">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <span class="card-tag tag-blue" style="margin-bottom: 10px;">DETAIL MODUL SISTEM</span>
+            <h3 id="mTitle" style="font-size: 22px; font-weight: 800; color: #FFF; margin-bottom: 8px;">Title</h3>
+            <p id="mDesc" style="font-size: 13px; color: #94A3B8; margin-bottom: 18px; line-height: 1.6;">Desc</p>
+            <div id="mList" style="padding: 16px; background: rgba(3, 6, 17, 0.85); border-radius: 12px; font-size: 12px; font-family: 'JetBrains Mono'; color: #00D2FF; margin-bottom: 24px; display: flex; flex-direction: column; gap: 6px;"></div>
+            <a id="mWaBtn" href="#" target="_blank" class="btn-primary" style="width: 100%;">Diskusi Proyek Ini Via WA →</a>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT HANDLERS -->
+    <script>
+        // Chart.js Setup
+        document.addEventListener('DOMContentLoaded', function() {
+            const chartCanvas = document.getElementById('fuelChart');
+            if (chartCanvas && typeof Chart !== 'undefined') {
+                const ctx = chartCanvas.getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Minggu 1', 'Minggu 2', 'Minggu 3', 'Minggu 4'],
+                        datasets: [{
+                            label: 'Rasio KM/L',
+                            data: [9.1, 9.4, 9.2, 9.85],
+                            borderColor: '#00D2FF',
+                            backgroundColor: 'rgba(0, 210, 255, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4,
+                            pointBackgroundColor: '#007AFF',
+                            pointRadius: 5
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            x: { ticks: { color: '#94A3B8', font: { family: 'JetBrains Mono', size: 10 } }, grid: { color: 'rgba(255,255,255,0.05)' } },
+                            y: { ticks: { color: '#94A3B8', font: { family: 'JetBrains Mono', size: 10 } }, min: 7, max: 12, grid: { color: 'rgba(255,255,255,0.05)' } }
+                        }
+                    }
+                });
+            }
+        });
+
+        // ROI Calculator
+        function calcROI() {
+            const fleet = parseInt(document.getElementById('inFleet').value);
+            const km = parseInt(document.getElementById('inKm').value);
+            const price = parseInt(document.getElementById('inPrice').value);
+
+            document.getElementById('lblFleet').innerText = `${fleet} Unit`;
+            document.getElementById('lblKm').innerText = `${km} KM/Hari`;
+            document.getElementById('lblPrice').innerText = `Rp ${price.toLocaleString('id-ID')} / Liter`;
+
+            const totalMonthlyKm = fleet * km * 26;
+            const litersPerMonth = totalMonthlyKm / 8;
+            const monthlyCost = litersPerMonth * price;
+            const savings = Math.round(monthlyCost * 0.15);
+
+            document.getElementById('lblResult').innerText = `Rp ${savings.toLocaleString('id-ID')}`;
+        }
+
+        // Portfolio Category Filter
+        function filterApp(cat, btn) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            document.querySelectorAll('.port-item').forEach(item => {
+                if (cat === 'all' || item.classList.contains(cat)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Modal Handlers
+        function openModal(title, desc, features) {
+            document.getElementById('mTitle').innerText = title;
+            document.getElementById('mDesc').innerText = desc;
+            
+            const listContainer = document.getElementById('mList');
+            listContainer.innerHTML = '';
+            features.forEach(f => {
+                const p = document.createElement('p');
+                p.innerText = `✓ ${f}`;
+                listContainer.appendChild(p);
+            });
+
+            const waText = encodeURIComponent(`Halo URAI SOLUTION, saya tertarik diskusi mengenai ${title}.`);
+            document.getElementById('mWaBtn').href = `https://wa.me/6282254127596?text=${waText}`;
+
+            document.getElementById('appModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('appModal').classList.remove('active');
+        }
+
+        function closeModalOutside(e) {
+            if (e.target.id === 'appModal') closeModal();
+        }
+
+        // WhatsApp Direct Send
+        function sendWA(e) {
+            e.preventDefault();
+            const name = document.getElementById('txtName').value;
+            const type = document.getElementById('txtType').value;
+            const msg = document.getElementById('txtMsg').value;
+            
+            const text = `Halo URAI SOLUTION,%0ANama: ${encodeURIComponent(name)}%0AKebutuhan Sistem: ${encodeURIComponent(type)}%0APesan: ${encodeURIComponent(msg)}`;
+            window.open(`https://wa.me/6282254127596?text=${text}`, '_blank');
+        }
+    </script>
+</body>
+</html>
