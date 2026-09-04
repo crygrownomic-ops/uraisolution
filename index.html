@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URAI SOLUTION — Operational Tech & Enterprise Systems</title>
     
-    <!-- Embedded Favicon Anti-Break -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <!-- ALAMAT FAVICON DARI FOLDER ASSETS -->
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon.ico">
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +18,7 @@
     <!-- Chart.js Engine -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
-    <!-- PURE BULLETPROOF CSS (TIDAK BERGANTUNG PADA FRAMEWORK LUAR) -->
+    <!-- PURE BULLETPROOF CSS (TERKUNCI DI DALAM FILE HTML) -->
     <style>
         /* RESET & BASE STYLES */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -69,7 +71,7 @@
         .brand { display: flex; align-items: center; gap: 14px; }
         .brand-logo-box {
             padding: 5px; background: #0F172A; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 14px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;
         }
         .brand-logo { width: 42px; height: 42px; border-radius: 10px; object-fit: contain; display: block; }
         .brand-title-wrap { display: flex; align-items: center; gap: 8px; }
@@ -203,7 +205,11 @@
         <div class="container nav-wrapper">
             <a href="./index.html" class="brand">
                 <div class="brand-logo-box">
-                    <img src="./urai-solution-master-logo.png" onerror="this.onerror=null; this.src='logo.jpeg';" alt="URAI SOLUTION Logo" class="brand-logo">
+                    <!-- ALAMAT LOGO LOGO DENGAN FOLDER ASSETS -->
+                    <img src="./assets/urai-solution-master-logo.png" 
+                         onerror="this.onerror=null; this.src='./assets/favicon.png';" 
+                         alt="URAI SOLUTION Logo" 
+                         class="brand-logo">
                 </div>
                 <div class="brand-title-wrap">
                     <div>
@@ -336,7 +342,7 @@
                 </div>
 
                 <div class="result-card">
-                    <span style="font-size: 11px; font-family: 'JetBrains Mono'; color: #94A3B8; text-transform: uppercase; tracking-widest: 1px;">ESTIMASI HEMAT BBM BULANAN (EFISIENSI 15%)</span>
+                    <span style="font-size: 11px; font-family: 'JetBrains Mono'; color: #94A3B8; text-transform: uppercase;">ESTIMASI HEMAT BBM BULANAN (EFISIENSI 15%)</span>
                     <div class="result-amount" id="lblResult">Rp 7.371.000</div>
                     <p style="font-size: 13px; color: #94A3B8; margin-bottom: 24px; line-height: 1.6;">Mencakup eliminasi manipulasi nota BBM, analisis rasio KM/L, dan pengawasan rute pengemudi.</p>
                     <a href="https://wa.me/6282254127596?text=Halo%20URAI%20SOLUTION,%20saya%20tertarik%20sistem%20FleetOps%20setelah%20mencoba%20simulasi%20penghematan." target="_blank" class="btn-primary" style="width: 100%;">
