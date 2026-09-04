@@ -5,52 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URAI SOLUTION — Operational Tech & Enterprise Systems</title>
     
-    <!-- Favicon -->
-    <link rel="icon" href="./favicon.ico" sizes="any">
-    <link rel="icon" type="image/png" href="./favicon.png">
-    <link rel="apple-touch-icon" href="./urai-solution-master-logo.png">
+    <!-- Embedded Inline Favicon (Anti-404 / Langsung Load) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Chart.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <!-- Google Fonts -->
+    <!-- Preconnect ke CDN CDN Luar -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Tailwind CSS (Di-defer agar tidak memblokir render browser) -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    
+    <!-- Chart.js (Di-defer) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        navy: {
-                            950: '#030611',
-                            900: '#070B19',
-                            800: '#0F172A',
-                            700: '#1E293B',
-                        },
-                        electric: '#007AFF',
-                        cyanGlow: '#00D2FF',
-                    }
-                }
-            }
-        }
-    </script>
     <style>
+        /* Fallback CSS Murni agar Tampilan Langsung Muncul Seketika */
         body {
             background-color: #030611;
             color: #F8FAFC;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            padding: 0;
         }
         .glass-panel {
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(15, 23, 42, 0.75);
             backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
         .glass-panel-hover {
@@ -711,7 +696,6 @@
             </div>
             <p id="modalDesc" class="text-xs text-slate-300 leading-relaxed"></p>
             <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs font-mono text-cyan-400 space-y-1" id="modalFeatures">
-                <!-- Features list filled via JS -->
             </div>
             <a id="modalWaBtn" href="#" target="_blank" class="block w-full text-center py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase">
                 Diskusi Proyek Ini Via WA →
@@ -719,46 +703,51 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT HANDLERS -->
+    <!-- JAVASCRIPT HANDLERS (Aman & Bebas Error) -->
     <script>
-        // Chart Initialization
-        const ctx = document.getElementById('fuelChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Minggu 1', 'Minggu 2', 'Minggu 3', 'Minggu 4'],
-                datasets: [{
-                    label: 'Rasio KM/Liter Armada',
-                    data: [9.1, 9.4, 9.2, 9.85],
-                    borderColor: '#00D2FF',
-                    backgroundColor: 'rgba(0, 210, 255, 0.1)',
-                    borderWidth: 3,
-                    fill: true,
-                    tension: 0.4,
-                    pointBackgroundColor: '#007AFF',
-                    pointRadius: 5
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: {
-                    x: {
-                        grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                        ticks: { color: '#94A3B8', font: { family: 'JetBrains Mono', size: 10 } }
+        // Chart Initialization (Dijalankan secara aman setelah seluruh elemen load)
+        window.addEventListener('load', function() {
+            const chartCanvas = document.getElementById('fuelChart');
+            if (chartCanvas && typeof Chart !== 'undefined') {
+                const ctx = chartCanvas.getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Minggu 1', 'Minggu 2', 'Minggu 3', 'Minggu 4'],
+                        datasets: [{
+                            label: 'Rasio KM/Liter Armada',
+                            data: [9.1, 9.4, 9.2, 9.85],
+                            borderColor: '#00D2FF',
+                            backgroundColor: 'rgba(0, 210, 255, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4,
+                            pointBackgroundColor: '#007AFF',
+                            pointRadius: 5
+                        }]
                     },
-                    y: {
-                        grid: { color: 'rgba(255, 255, 255, 0.05)' },
-                        ticks: { color: '#94A3B8', font: { family: 'JetBrains Mono', size: 10 } },
-                        min: 7,
-                        max: 12
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            x: {
+                                grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                                ticks: { color: '#94A3B8', font: { family: 'JetBrains Mono', size: 10 } }
+                            },
+                            y: {
+                                grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                                ticks: { color: '#94A3B8', font: { family: 'JetBrains Mono', size: 10 } },
+                                min: 7,
+                                max: 12
+                            }
+                        }
                     }
-                }
+                });
             }
         });
 
-        // Interactive ROI Calculator Function
+        // Interactive ROI Calculator
         function updateCalculator() {
             const fleet = parseInt(document.getElementById('fleetCount').value);
             const km = parseInt(document.getElementById('dailyKm').value);
@@ -776,17 +765,19 @@
             document.getElementById('savingsResult').innerText = `Rp ${savings.toLocaleString('id-ID')}`;
         }
 
-        // Portfolio Category Filter
+        // Portfolio Filter
         function filterPortfolio(category) {
             const cards = document.querySelectorAll('.port-card');
             const buttons = ['all', 'ops', 'hr', 'finance', 'edu'];
 
             buttons.forEach(btn => {
                 const element = document.getElementById(`tab-${btn}`);
-                if (btn === category) {
-                    element.className = "px-3.5 py-1.5 rounded-lg bg-blue-600 text-white font-bold transition";
-                } else {
-                    element.className = "px-3.5 py-1.5 rounded-lg glass-panel text-slate-400 hover:text-white transition";
+                if (element) {
+                    if (btn === category) {
+                        element.className = "px-3.5 py-1.5 rounded-lg bg-blue-600 text-white font-bold transition";
+                    } else {
+                        element.className = "px-3.5 py-1.5 rounded-lg glass-panel text-slate-400 hover:text-white transition";
+                    }
                 }
             });
 
@@ -799,7 +790,7 @@
             });
         }
 
-        // Demo Modal Handlers
+        // Modal Handlers
         function openDemoModal(title, desc, features) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalDesc').innerText = desc;
